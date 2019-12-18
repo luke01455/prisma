@@ -9,6 +9,40 @@ const prisma = new Prisma({
 // method name matches with query name from schema
 // data represents users
 
-prisma.query.comments(null, '{ id text author { id name } }').then((data) => {
+// prisma.query.users(null, '{ id name posts { id title } }').then((data) => {
+//     console.log(JSON.stringify(data, undefined, 2))
+// })
+
+// prisma.mutation.createPost({
+//     data: {
+//         title: "101 graphql",
+//         body: "",
+//         published: false,
+//         author: {
+//             connect: {
+//                 id: "ck4bfexyu004m07517z0u3li0"
+//             }
+//         }
+//     },
+    
+// }, '{ id title body published }').then((data) => {
+//     console.log(JSON.stringify(data, undefined, 2))
+//     return prisma.query.users(null, '{ id name posts { id title } }')
+// }).then((data) => {
+//     console.log(JSON.stringify(data, undefined, 2))
+// })
+
+prisma.mutation.updatePost({
+    data: {
+       body: "101 learning about graphql",
+       published: "true"
+    },
+    where: {
+        id: "ck4bk6p49006c0751r6xhsch8"
+    }
+}, '{ id title body published}').then((data) => {
+    console.log(data)
+    return prisma.query.posts(null, '{ id title body published author { id name }}')
+}).then((data) => {
     console.log(JSON.stringify(data, undefined, 2))
 })
