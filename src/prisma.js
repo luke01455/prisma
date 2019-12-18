@@ -8,13 +8,6 @@ const prisma = new Prisma({
 // prisma.query prisma.mutation prisma.subscription prisma.exists
 // method name matches with query name from schema
 
-// prisma.exists.Comment({
-//     id: "ck4bfosxn005507511l3aoun0",
-//     author: {
-//         id: "ck4bfexyu004m07517z0u3li0"
-//     }
-// }).then((exists) => console.log(exists))
-
 const createPostForUser = async (authorId, data) => {
     const userExists = await prisma.exists.User({ id: authorId})
 
@@ -63,10 +56,10 @@ const updatePostForUser = async (postId, data) => {
     return post.author 
 }
 
-updatePostForUser('ck4bqnl5g00770751vsor8jxb', {
-    body: 'lord of the rings 2'
-}).then((user) => {
-    console.log(JSON.stringify(user, undefined, 2))
-}).catch((error) => {
-    console.log(error)
-})
+// updatePostForUser('ck4bqnl5g00770751vsor8jxb', {
+//     body: 'lord of the rings 2'
+// }).then((user) => {
+//     console.log(JSON.stringify(user, undefined, 2))
+// }).catch((error) => {
+//     console.log(error)
+// })
