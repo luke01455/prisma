@@ -5,6 +5,7 @@ type User {
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
   posts: [Post!]!
+  
 }
 
 type Post {
