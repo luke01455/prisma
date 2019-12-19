@@ -1,22 +1,23 @@
 import uuidv4 from 'uuid/v4';
 
 const Mutation = {
-    createUser(parent, args, { db }, info) {
-        const emailTaken = db.users.some((user) => {
-            return user.email === args.data.email
-        })
+    createUser(parent, args, { prisma }, info) {
+        
+        // const emailTaken = db.users.some((user) => {
+        //     return user.email === args.data.email
+        // })
 
-        if(emailTaken) {
-            throw new Error('Email already taken.')
-        }
+        // if(emailTaken) {
+        //     throw new Error('Email already taken.')
+        // }
 
-        const user = {
-            id: uuidv4(),
-            ...args.data
-        }
-        db.users.push(user)
+        // const user = {
+        //     id: uuidv4(),
+        //     ...args.data
+        // }
+        // db.users.push(user)
 
-        return user
+        // return user
     },
     deleteUser(parent, args, { db }, info) {
         const userIndex = db.users.findIndex((user) => user.id === args.id)
