@@ -57,7 +57,8 @@ const Query = {
             email: 'Mike@gmail.com'
         }
     },
-    post() {
+    post(parent, args, { prisma, request }, info) {
+        const userId = getUserId(request, false)
         return {
             id: '12234',
             title: 'Hello world',
