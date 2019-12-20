@@ -34,10 +34,8 @@ const Query = {
                 },
                 {
                     body_contains: args.query
-                }]
-            
+                }]   
         }
-
         return prisma.query.posts(opArgs, info)
     },
     comments(parent, args, { prisma }, info){
