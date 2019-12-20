@@ -21,10 +21,13 @@ const server = new GraphQLServer({
         Comment
     },
     // gives all files on server the db file as context
-    context: {
-        db,
-        pubsub,
-        prisma
+    context(request) {
+        return {
+            db,
+            pubsub,
+            prisma,
+            request
+        }
     }
 })
 
