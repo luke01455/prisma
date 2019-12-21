@@ -3,6 +3,8 @@ import getUserId from '../utils/getUserId'
 const Query = {
     posts(parent, args, { db, prisma }, info) {
         const opArgs = {
+            first: args.first,
+            skip: args.skip,
             where: {
                 published: true
             }
@@ -42,7 +44,10 @@ const Query = {
         return prisma.query.comments(null, info)
     },
     users(parent, args, { db, prisma }, info){
-        const opArgs = {}
+        const opArgs = {
+            first: args.first,
+            skip: args.skip
+        }
 
         if (args.query) {
             // finding users where given string is contained within email or name
